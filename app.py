@@ -3,6 +3,7 @@ import google.generativeai as genai
 import logging
 import requests
 from bs4 import BeautifulSoup
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -112,10 +113,6 @@ def dashboard():
     return render_template('dashboard.html', user=session.get('user'))
 
 
-@app.route('/news')
-def news():
-    news_data = fetch_latest_news()
-    return render_template('news.html', news=news_data)
 
 if __name__ == '__main__':
     app.run(debug=True)
